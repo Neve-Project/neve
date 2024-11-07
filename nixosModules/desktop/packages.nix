@@ -32,6 +32,8 @@
         geary
         evince
         gnome-software
+        inputs.nevica.packages.${pkgs.system}.nevica
+        neovide
       ];
     };
     services.flatpak.packages = [

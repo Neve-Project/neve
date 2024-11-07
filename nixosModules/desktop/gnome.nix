@@ -18,21 +18,17 @@
       desktop = {
         packages.enable = lib.mkForce true;
         fonts.enable = lib.mkForce true;
+        wayland.enable = lib.mkForce true;
       };
       packages.flatpak.enable = lib.mkForce true;
     };
     services = {
       xserver = {
-        enable = true;
         displayManager.gdm.enable = true;
         desktopManager.gnome.enable = true;
-        excludePackages = [pkgs.xterm];
       };
       udev.packages = [pkgs.gnome-settings-daemon];
-      dbus.packages = with pkgs; [gnome2.GConf];
-      sysprof.enable = true;
     };
-    programs.dconf.enable = true;
 
     environment.gnome.excludePackages = with pkgs; [
       epiphany
