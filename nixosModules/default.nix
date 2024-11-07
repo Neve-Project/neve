@@ -1,0 +1,7 @@
+{
+  imports = [
+    ./config
+    ./system
+    ./desktop
+  ];
+}
