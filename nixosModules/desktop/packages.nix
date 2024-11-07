@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  inputs,
   ...
 }: {
   options = {
@@ -14,7 +15,6 @@
   config = lib.mkIf config.neve.desktop.packages.enable {
     users.users.${config.neve.config.username} = {
       packages = with pkgs; [
-        firefox
         resources
         gnome-maps
         gnome-console
@@ -34,5 +34,11 @@
         gnome-software
       ];
     };
+    services.flatpak.packages = [
+      {
+        appId = "io.github.zen_browser.zen";
+        origin = "flathub";
+      }
+    ];
   };
 }

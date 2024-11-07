@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
   options = {
@@ -14,21 +13,27 @@
   };
   config = lib.mkIf config.neve.packages.flatpak.enable {
     # Enable flatpak support
-    services.flatpak.enable = true;
     xdg.portal.enable = true;
-
-    # Add flatpak remotes
-    systemd.services = {
-      flatpak-repo = {
-        wantedBy = ["multi-user.target"];
-        path = [pkgs.flatpak];
-        script = ''
-          flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && \
-          flatpak remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo && \
-          flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo && \
-          flatpak remote-add --if-not-exists rhel https://flatpaks.redhat.io/rhel.flatpakrepo
-        '';
-      };
+    services.flatpak = {
+      enable = true;
+      remotes = [
+        {
+          name = "flathub";
+          location = "https://flathub.org/repo/flathub.flatpakrepo";
+        }
+        {
+          name = "flathub-beta";
+          location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo";
+        }
+        {
+          name = "gnome-nightly";
+          location = "https://nightly.gnome.org/gnome-nightly.flatpakrepo";
+        }
+        {
+          name = "rhel";
+          location = "https://flatpaks.redhat.io/rhel.flatpakrepo";
+        }
+      ];
     };
   };
 }
