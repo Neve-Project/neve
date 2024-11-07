@@ -20,7 +20,10 @@
         fonts.enable = lib.mkForce true;
         wayland.enable = lib.mkForce true;
       };
-      packages.flatpak.enable = lib.mkForce true;
+      packages = {
+        flatpak.enable = lib.mkForce true;
+        multimedia.enable = lib.mkForce true;
+      };
     };
     services = {
       xserver = {
