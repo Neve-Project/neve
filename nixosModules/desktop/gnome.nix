@@ -19,12 +19,14 @@
         enable = true;
         displayManager.gdm.enable = true;
         desktopManager.gnome.enable = true;
+        excludePackages = [pkgs.xterm];
       };
     };
     programs.dconf.enable = true;
 
     environment.gnome.excludePackages = with pkgs; [
-      xterm
+      epiphany
+      gnome-system-monitor
     ];
   };
 }
