@@ -16,6 +16,7 @@
       desktop = lib.nixosSystem {
         system = currentSystem;
         modules = [
+          inputs.nix-flatpak.nixosModules.nix-flatpak
           ./profiles/desktop.nix
         ];
         specialArgs = {
@@ -37,5 +38,7 @@
       url = "github:matteocavestri/nevica";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 }

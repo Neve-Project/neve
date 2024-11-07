@@ -15,7 +15,10 @@
 
   config = lib.mkIf config.neve.desktop.gnome.enable {
     neve = {
-      desktop.packages.enable = lib.mkForce true;
+      desktop = {
+        packages.enable = lib.mkForce true;
+        fonts.enable = lib.mkForce true;
+      };
       packages.flatpak.enable = lib.mkForce true;
     };
     services = {
