@@ -14,7 +14,10 @@
   };
 
   config = lib.mkIf config.neve.desktop.gnome.enable {
-    neve.desktop.packages.enable = lib.mkForce true;
+    neve = {
+      desktop.packages.enable = lib.mkForce true;
+      packages.flatpak.enable = lib.mkForce true;
+    };
     services = {
       xserver = {
         enable = true;

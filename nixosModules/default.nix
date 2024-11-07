@@ -3,5 +3,6 @@
     ./config
     ./system
     ./desktop
+    ./packages
   ];
 }

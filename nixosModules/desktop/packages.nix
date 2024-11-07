@@ -31,6 +31,7 @@
         simple-scan
         geary
         evince
+        gnome-software
       ];
     };
   };
