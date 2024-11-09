@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
   options = {
@@ -19,8 +18,6 @@
       isNormalUser = true;
       extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
       packages = [
-        pkgs.git
-        pkgs.firefox
       ];
     };
   };
