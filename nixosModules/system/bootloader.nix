@@ -20,7 +20,7 @@
     boot.loader = {
       # General efi configuration --> mount under /boot
       efi = {
-        canTouchEfiVariables = false;
+        canTouchEfiVariables = true;
         efiSysMountPoint = "/boot";
       };
 

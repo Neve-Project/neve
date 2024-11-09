@@ -8,8 +8,8 @@
   neve.system = {
     # Bootloader settings
     bootloader = {
-      systemdBoot.enable = true;
-      grub2.enable = false;
+      systemdBoot.enable = false;
+      grub2.enable = true;
     };
 
     # Kernel Settings
