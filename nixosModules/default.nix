@@ -4,5 +4,6 @@
     ./system
     ./desktop
     ./packages
+    ./virtualisation
   ];
 }
