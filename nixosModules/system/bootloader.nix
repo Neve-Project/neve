@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   options = {
@@ -34,6 +35,7 @@
         enable = true;
         efiSupport = true;
         device = "nodev";
+        theme = "${pkgs.catppuccin-grub}";
       };
     };
   };
