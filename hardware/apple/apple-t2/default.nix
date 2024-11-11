@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  pkgs-neve,
   ...
 }: let
   # Substituters for Apple T2
@@ -34,9 +35,6 @@
   # pipewire package definition
   pipewirePackage = overrideAudioFiles pkgs.pipewire "spa/plugins/";
 
-  # tiny-dfr package definition
-  tiny-dfrPackage = pkgs.callPackage ./pkgs/tiny-dfr {};
-
   # Apple osLoader Installer (Disabled by default)
   apple-set-os-loader-installer = pkgs.stdenv.mkDerivation {
     name = "apple-set-os-loader-installer-1.0";
@@ -56,7 +54,6 @@
       install -D bootx64_silent.efi $out/bootx64.efi
     '';
   };
-  # Make the code shorter
 in {
   # Apple T2 Options definition
   options = {
@@ -148,7 +145,7 @@ in {
         '';
       })
       (lib.mkIf config.neve.hardware.apple.apple-t2.enableTinyDfr {
-        services.udev.packages = [tiny-dfrPackage];
+        services.udev.packages = [pkgs-neve.tinydfr];
 
         systemd.services.tiny-dfr = {
           enable = true;
@@ -157,12 +154,12 @@ in {
           bindsTo = ["dev-tiny_dfr_display.device" "dev-tiny_dfr_backlight.device"];
           startLimitIntervalSec = 30;
           startLimitBurst = 2;
-          script = "${tiny-dfrPackage}/bin/tiny-dfr";
-          restartTriggers = [tiny-dfrPackage];
+          script = "${pkgs-neve.tinydfr}/bin/tiny-dfr";
+          restartTriggers = [pkgs-neve.tinydfr];
         };
 
         environment.etc."tiny-dfr/config.toml" = {
-          source = "${tiny-dfrPackage}/share/tiny-dfr/config.toml";
+          source = "${pkgs-neve.tinydfr}/share/tiny-dfr/config.toml";
         };
       })
     ]

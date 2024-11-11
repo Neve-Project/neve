@@ -2,6 +2,7 @@
   outputs = {
     nixpkgs,
     nixpkgs-unstable,
+    nevepkgs,
     self,
     ...
   } @ inputs: let
@@ -10,6 +11,7 @@
     currentSystem = "x86_64-linux";
     pkgs = import nixpkgs {system = currentSystem;};
     pkgs-unstable = import nixpkgs-unstable {system = currentSystem;};
+    pkgs-neve = nevepkgs.packages.${currentSystem};
   in {
     # -------------------- NixOS Configuration --------------------------
     nixosConfigurations = {
@@ -22,6 +24,7 @@
         specialArgs = {
           inherit inputs;
           inherit pkgs-unstable;
+          inherit pkgs-neve;
         };
       };
     };
@@ -32,6 +35,7 @@
     # ------------------ NixPkgs ----------------------------------------
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    nevepkgs.url = "github:Neve-Project/nevepkgs";
 
     # ------------------ Nevica ------------------------------------------
     nevica = {
