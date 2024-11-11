@@ -207,11 +207,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1731338949,
-        "narHash": "sha256-jwqLNwramL9IkiekfRtt0MDBh00J9nCY2aWEt9TsDsY=",
+        "lastModified": 1731350164,
+        "narHash": "sha256-r+9y1Al9Ud0QfcaPw4sXOMaXV+K6Zj7KEHWr9fjgitY=",
         "owner": "Neve-Project",
         "repo": "nevepkgs",
-        "rev": "7e1d4bd4d72b10ae67338013f0ea36e1b808cfb6",
+        "rev": "fad81792661b4b62ae5840492003c7fae908f2f6",
         "type": "github"
       },
       "original": {

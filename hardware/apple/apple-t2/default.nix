@@ -83,7 +83,7 @@ in {
     lib.mkMerge [
       {
         # For keyboard and touchbar
-        boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.callPackage ./pkgs/kernel.nix {});
+        boot.kernelPackages = pkgs.linuxPackagesFor pkgs-neve.t2-linux;
         boot.initrd.kernelModules = ["apple-bce"];
 
         services.udev.packages = [audioFilesUdevRules];
@@ -145,7 +145,7 @@ in {
         '';
       })
       (lib.mkIf config.neve.hardware.apple.apple-t2.enableTinyDfr {
-        services.udev.packages = [pkgs-neve.tinydfr];
+        services.udev.packages = [pkgs-neve.tiny-dfr];
 
         systemd.services.tiny-dfr = {
           enable = true;
@@ -154,12 +154,12 @@ in {
           bindsTo = ["dev-tiny_dfr_display.device" "dev-tiny_dfr_backlight.device"];
           startLimitIntervalSec = 30;
           startLimitBurst = 2;
-          script = "${pkgs-neve.tinydfr}/bin/tiny-dfr";
-          restartTriggers = [pkgs-neve.tinydfr];
+          script = "${pkgs-neve.tiny-dfr}/bin/tiny-dfr";
+          restartTriggers = [pkgs-neve.tiny-dfr];
         };
 
         environment.etc."tiny-dfr/config.toml" = {
-          source = "${pkgs-neve.tinydfr}/share/tiny-dfr/config.toml";
+          source = "${pkgs-neve.tiny-dfr}/share/tiny-dfr/config.toml";
         };
       })
     ]
