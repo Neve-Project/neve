@@ -5,5 +5,6 @@
     ./desktop
     ./packages
     ./virtualisation
+    ./services
   ];
 }
