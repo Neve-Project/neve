@@ -3,9 +3,7 @@
   lib,
   pkgs,
   ...
-}: let
-  libvirt-dbus = pkgs.callPackage ./packages/default.nix {inherit pkgs;};
-in {
+}: {
   options = {
     neve.virtualisation.libvirtd = {
       enable = lib.mkOption {
@@ -22,7 +20,6 @@ in {
       win-virtio
       win-spice
       virt-manager
-      # libvirt-dbus
     ];
     virtualisation = {
       libvirtd = {

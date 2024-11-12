@@ -2,16 +2,28 @@
   lib,
   config,
   pkgs,
+  pkgs-neve,
   ...
 }: let
-  # cockpitOverlay = self: super: {
-  #   cockpit = super.cockpit.overrideAttrs (oldAttrs: {
-  #     postInstall = ''
-  #       rm -rf $out/usr/share/cockpit/packagekit/
-  #     '';
-  #   });
-  # };
-  cockpit-apps = pkgs.callPackage ./cockpitPkgs/default.nix {inherit pkgs;};
+  cockpitOverlay = self: super: {
+    cockpit = super.cockpit.overrideAttrs (oldAttrs: {
+      postInstall = ''
+        rm -rf $out/share/cockpit/packagekit/
+        rm -rf $out/share/cockpit/selinux/
+        rm -rf $out/share/cockpit/playground/
+        cp -r ${pkgs-neve.cockpit-podman}/share/cockpit/* $out/share/cockpit/
+        cp -r ${pkgs-neve.cockpit-podman}/share/metainfo/* $out/share/metainfo/
+        cp -r ${pkgs-neve.cockpit-machines}/share/cockpit/* $out/share/cockpit/
+        cp -r ${pkgs-neve.cockpit-machines}/share/metainfo/* $out/share/metainfo/
+      '';
+      buildInputs =
+        oldAttrs.buildInputs
+        ++ [
+          pkgs-neve.cockpit-podman
+          pkgs-neve.cockpit-machines
+        ];
+    });
+  };
 in {
   options = {
     neve.services.server.cockpit.enable = lib.mkOption {
@@ -20,7 +32,7 @@ in {
     };
   };
   config = lib.mkIf config.neve.services.server.cockpit.enable {
-    # nixpkgs.overlays = [cockpitOverlay];
+    nixpkgs.overlays = [cockpitOverlay];
     neve.virtualisation.libvirtd.enable = lib.mkForce true;
     services.cockpit = {
       enable = true;
@@ -34,8 +46,8 @@ in {
     };
     environment.systemPackages = with pkgs; [
       kexec-tools
-      # cockpit-apps.podman-containers
-      # cockpit-apps.virtual-machines
+      pkgs-neve.cockpit-podman
+      pkgs-neve.cockpit-machines
     ];
   };
 }
