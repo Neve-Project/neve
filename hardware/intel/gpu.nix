@@ -10,6 +10,11 @@
       enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
+        description = ''
+          It enables Intel GPU drivers. This option enables
+          OpenGL, Vulkan and OpenCL drivers.
+        '';
+        example = "true";
       };
 
       # Intel GPU Version (1st to ...)
@@ -17,12 +22,22 @@
       version = lib.mkOption {
         type = lib.types.int;
         default = 1;
+        description = ''
+          Set your own Intel CPU/GPU version to install the appropriate graphic drivers.
+          It starts from intel core 1st generation.
+        '';
+        example = "11";
       };
 
       # Enable IntelGPU Monitoring
       monitoring.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
+        description = ''
+          This option installs intel monitoring suite.
+          (intel_gpu_top and nvtop).
+        '';
+        example = "true";
       };
     };
   };

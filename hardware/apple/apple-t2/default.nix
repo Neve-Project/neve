@@ -61,19 +61,30 @@ in {
       enable = lib.mkOption {
         default = false;
         type = lib.types.bool;
-        description = "Enable all Apple T2 support.";
+        description = ''
+          Enable all Apple T2 support.
+          This includes custom kernel build.
+        '';
+        example = "true";
       };
 
       enableAppleSetOsLoader = lib.mkOption {
         default = false;
         type = lib.types.bool;
-        description = "Whether to enable the appleSetOsLoader activation script.";
+        description = ''
+          Whether to enable the appleSetOsLoader activation script.
+          Disabled by default. It may cause instabilities.
+        '';
+        example = "true";
       };
 
       enableTinyDfr = lib.mkOption {
         default = true;
         type = lib.types.bool;
-        description = "Whether to enable the tiny-dfr touchbar service.";
+        description = ''
+          Whether to enable the tiny-dfr touchbar service.
+        '';
+        example = "true";
       };
     };
   };

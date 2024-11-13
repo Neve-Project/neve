@@ -8,6 +8,11 @@
     neve.hardware.intel.cpu.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
+      description = ''
+        It enables Intel CPU specific capabilities
+        (kvm-intel as kernel Module and thermald for laptops)
+      '';
+      example = "true";
     };
   };
 
