@@ -20,25 +20,25 @@
   config = lib.mkIf config.neve.desktop.packages.enable {
     users.users.${config.neve.config.username} = {
       packages = with pkgs; [
-        resources
-        gnome-maps
-        gnome-console
-        amberol
-        decibels
-        showtime
-        papers
-        gnome-weather
-        gnome-contacts
-        gnome-calendar
-        gnome-clocks
-        gnome-calculator
-        gnome-characters
-        gnome-font-viewer
-        loupe
-        gnome-connections
-        simple-scan
-        geary
-        gnome-software
+        resources # Resource Monitor
+        gnome-maps # Maps
+        gnome-console # Terminal
+        gapless # Music Player
+        decibels # Audio Player
+        showtime # Video Player
+        papers # Document Reader
+        gnome-weather # Weather
+        gnome-contacts # Contacts
+        gnome-calendar # Calendar
+        gnome-clocks # Clocks
+        gnome-calculator # Calculator
+        gnome-characters # Characters (Emojis and more)
+        gnome-font-viewer # Font Viewer
+        loupe # Image Viewer
+        gnome-connections # Remote Desktop Connection
+        simple-scan # Scanner
+        geary # Mail Client
+        gnome-software # Flatpak store
       ];
     };
     services.flatpak.packages = [
