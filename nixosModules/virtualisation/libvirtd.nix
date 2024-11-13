@@ -9,6 +9,11 @@
       enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
+        description = ''
+          This option enables qemu/libvirt.
+          It also adds support for win-virtio and win-spice.
+        '';
+        example = "true";
       };
     };
   };

@@ -7,6 +7,11 @@
     neve.system.zram.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
+      description = ''
+        It enables zram as swap.
+        (It uses zstd algorithm).
+      '';
+      example = "true";
     };
   };
 

@@ -8,6 +8,13 @@
       flatpak.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
+        description = ''
+          It installs and enable Flatpak support.
+          It also adds flathub, flathub-beta,
+          gnome-nightly and rhel repos.
+          (Enabled by default in desktop profiles).
+        '';
+        example = "true";
       };
     };
   };

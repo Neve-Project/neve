@@ -8,6 +8,10 @@
     neve.packages.basepkgs.enable = lib.mkOption {
       type = lib.types.bool;
       default = true;
+      description = ''
+        It installs basepkgs for the system.
+      '';
+      example = "false";
     };
   };
 

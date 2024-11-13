@@ -8,10 +8,18 @@
       rust.enable = lib.mkOption {
         type = lib.types.bool;
         default = true;
+        description = ''
+          This option applys rust overlays in the linux kernel.
+        '';
+        example = "false";
       };
       inotify = lib.mkOption {
         type = lib.types.int;
         default = 512;
+        description = ''
+          This option sets inotify kernel parameter.
+        '';
+        example = "1024";
       };
     };
   };

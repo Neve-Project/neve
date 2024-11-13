@@ -9,6 +9,11 @@
       multimedia.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
+        description = ''
+          It installs multimedia codecs.
+          (Enabled by default in desktop profiles).
+        '';
+        example = "true";
       };
     };
   };

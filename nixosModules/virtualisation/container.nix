@@ -9,14 +9,28 @@
       enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
+        description = ''
+          This option enables container support
+          (Enabled by default in desktop profiles).
+        '';
+        example = "true";
       };
       podman.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
+        description = ''
+          This option enables podman as container backend.
+        '';
+        example = "true";
       };
       distrobox.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
+        description = ''
+          This option installs distrobox.
+          (Enabled by default in desktop profiles).
+        '';
+        example = "true";
       };
     };
   };

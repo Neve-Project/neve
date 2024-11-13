@@ -29,6 +29,11 @@ in {
     neve.services.server.cockpit.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
+      description = ''
+        It installs and run (9090 port) cockpit as server
+        dashboard. This option builds a custom version of cockpit.
+      '';
+      example = "true";
     };
   };
   config = lib.mkIf config.neve.services.server.cockpit.enable {

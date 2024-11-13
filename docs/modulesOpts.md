@@ -1,5 +1,3 @@
-# Modules Options (WIP)
-
 ## config/audio.nix
 
 ### neve.config.audio.pipewire.enable
@@ -194,4 +192,144 @@
 - **type**: bool
 - **default**: false
 - **description**: It sets up wayland server.
+- **example**: true
+
+## packages/basepkgs.nix
+
+### neve.packages.basepkgs.enable
+
+- **type**: bool
+- **default**: true
+- **description**: It installs basepkgs for the system.
+- **example**: false
+
+## packages/flatpak.nix
+
+### neve.packages.flatpak.enable
+
+- **type**: bool
+- **default**: false
+- **description**: It installs and enable Flatpak support.
+  It also adds flathub, flathub-beta,
+  gnome-nightly and rhel repos.
+  (Enabled by default in desktop profiles).
+- **example**: true
+
+## packages/libreoffice.nix
+
+### neve.packages.libreoffice.enable
+
+- **type**: bool
+- **default**: false
+- **description**: Installs libreoffice and english spell check.
+  It is enabled by default in desktop and workstation
+  profiles. You can add your spellcheck using
+  hunspellDicts.{YOUR LOCALE}
+- **example**: neve.packages.libreoffice.enable = true
+
+## packages/multimedia.nix
+
+### neve.packages.multimedia.enable
+
+- **type**: bool
+- **default**: false
+- **description**: It installs multimedia codecs.
+  (Enabled by default in desktop profiles).
+- **example**: true
+
+## services/printing.nix
+
+### neve.services.printing.enable
+
+- **type**: bool
+- **default**: false
+- **description**: It installs and enables CUPS server.
+- **example**: true
+
+## services/server.nix
+
+### neve.services.server.cockpit.enable
+
+- **type**: bool
+- **default**: false
+- **description**: It installs and run (9090 port) cockpit as server
+  dashboard. This option builds a custom version of cockpit.
+- **example**: true
+
+## system/bootloader.nix
+
+### neve.system.bootloader.systemdBoot.enable
+
+- **type**: bool
+- **default**: false
+- **description**: This option enables systemdboot as default bootloader.
+  Systemdboot is a UEFY-only bootloader.
+- **example**: true
+
+### neve.system.bootloader.grub2.enable
+
+- **type**: bool
+- **default**: true
+- **description**: This option enables grub2 as default bootloader.
+- **example**: false
+
+## system/kernel.nix
+
+### neve.system.kernel.rust.enable
+
+- **type**: bool
+- **default**: true
+- **description**: This option applys rust overlays in the linux kernel.
+- **example**: false
+
+### neve.system.kernel.inotify
+
+- **type**: int
+- **default**: 512
+- **description**: This option sets inotify kernel parameter.
+- **example**: 1024
+
+## system/zram.nix
+
+### neve.system.zram.enable
+
+- **type**: bool
+- **default**: false
+- **description**: It enables zram as swap.
+  (It uses zstd algorithm).
+- **example**: true
+
+## virtualisation/container.nix
+
+### neve.virtualisation.container.enable
+
+- **type**: bool
+- **default**: false
+- **description**: This option enables container support
+  (Enabled by default in desktop profiles).
+- **example**: true
+
+### neve.virtualisation.container.podman.enable
+
+- **type**: bool
+- **default**: false
+- **description**: This option enables podman as container backend.
+- **example**: true
+
+### neve.virtualisation.container.distrobox.enable
+
+- **type**: bool
+- **default**: false
+- **description**: This option installs distrobox.
+  (Enabled by default in desktop profiles).
+- **example**: true
+
+## virtualisation/libvirtd.nix
+
+### neve.virtualisation.libvirtd.enable
+
+- **type**: bool
+- **default**: false
+- **description**: This option enables qemu/libvirt.
+  It also adds support for win-virtio and win-spice.
 - **example**: true
