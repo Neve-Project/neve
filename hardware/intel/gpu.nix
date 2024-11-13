@@ -54,7 +54,7 @@
             # Intel QuickSync Driver (Unfree)
             intel-media-sdk
             # Intel OpenCL Driver
-            ocl-icd
+            intel-ocl
           ]
           # Intel graphics driver for GPUs between Broadwell and Tiger Lake
           ++ lib.optionals (config.neve.hardware.intel.gpu.version >= 5 && config.neve.hardware.intel.gpu.version <= 11) [
@@ -66,7 +66,7 @@
             # Intel QuickSync Driver (Unfree)
             intel-media-sdk
             # Intel OpenCL Driver
-            ocl-icd
+            intel-ocl
           ]
           # Intel graphics driver for GPUs newer than Tiger Lake
           ++ lib.optionals (config.neve.hardware.intel.gpu.version > 11) [
@@ -78,7 +78,7 @@
             # Intel QuickSync Driver (Unfree)
             vpl-gpu-rt
             # Intel OpenCL Driver
-            ocl-icd
+            intel-ocl
           ];
 
         # VA-API support for 32-bit for both before and after Tiger Lake
