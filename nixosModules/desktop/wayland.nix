@@ -8,6 +8,10 @@
     neve.desktop.wayland.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
+      description = ''
+        It sets up wayland server.
+      '';
+      example = "true";
     };
   };
   config = lib.mkIf config.neve.desktop.wayland.enable {

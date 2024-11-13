@@ -144,3 +144,54 @@
   You have to set your password from root.
   (passwd YOUR_USERNAME)
 - **example**: bestGuyEver
+
+## desktop/fonts.nix
+
+### neve.desktop.fonts.enable
+
+- **type**: bool
+- **default**: false
+- **description**: This option installs different fonts.
+  (liberation_ttf, inconsolata-nerdfont,
+  font-awesome, noto-fonts-emoji).
+  This option is enabled by default if you use a desktop profile.
+- **example**: true
+
+## desktop/gnome.nix
+
+### neve.desktop.gnome.enable
+
+- **type**: bool
+- **default**: false
+- **description**: It installs and enables Gnome and GDM.
+  (Enabled by default in desktop profiles).
+- **example**: true
+
+## desktop/packages.nix
+
+### neve.desktop.packages.enable
+
+- **type**: bool
+- **default**: false
+- **description**: It install default Neve desktop packages.
+  (Enabled by default if you are using a desktop profile).
+- **example**: true
+
+## desktop/services.nix
+
+### neve.desktop.services.enable
+
+- **type**: bool
+- **default**: false
+- **description**: It enables base desktop services.
+  (dconf, xdg-desktop-portal, dbus, gvfs, sysprof).
+- **example**: true
+
+## desktop/wayland.nix
+
+### neve.desktop.wayland.enable
+
+- **type**: bool
+- **default**: false
+- **description**: It sets up wayland server.
+- **example**: true

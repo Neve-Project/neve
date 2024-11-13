@@ -8,6 +8,11 @@
     neve.desktop.gnome.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
+      description = ''
+        It installs and enables Gnome and GDM.
+        (Enabled by default in desktop profiles).
+      '';
+      example = "true";
     };
   };
 

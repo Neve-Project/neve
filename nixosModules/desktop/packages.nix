@@ -8,6 +8,11 @@
     neve.desktop.packages.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
+      description = ''
+        It install default Neve desktop packages.
+        (Enabled by default if you are using a desktop profile).
+      '';
+      example = "true";
     };
   };
 

@@ -8,6 +8,13 @@
     neve.desktop.fonts.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
+      description = ''
+        This option installs different fonts.
+        (liberation_ttf, inconsolata-nerdfont,
+        font-awesome, noto-fonts-emoji).
+        This option is enabled by default if you use a desktop profile.
+      '';
+      example = "true";
     };
   };
 

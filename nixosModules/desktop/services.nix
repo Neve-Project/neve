@@ -9,6 +9,11 @@
       enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
+        description = ''
+          It enables base desktop services.
+          (dconf, xdg-desktop-portal, dbus, gvfs, sysprof).
+        '';
+        example = "true";
       };
     };
   };
