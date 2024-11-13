@@ -14,6 +14,7 @@
         profiles. You can add your spellcheck using
         hunspellDicts.{YOUR LOCALE}
       '';
+      example = "neve.packages.libreoffice.enable = true;";
     };
   };
 

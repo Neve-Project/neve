@@ -5,11 +5,9 @@
   ...
 }: {
   options = {
-    neve.desktop.gnome = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-      };
+    neve.desktop.gnome.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
     };
   };
 
@@ -28,12 +26,14 @@
     services = {
       xserver = {
         displayManager.gdm.enable = true;
-        desktopManager.gnome.enable = true;
+        desktopManager.gnome = {
+          enable = true;
+        };
       };
       udev.packages = [pkgs.gnome-settings-daemon];
     };
-
     environment.gnome.excludePackages = with pkgs; [
+      totem
       epiphany
       gnome-system-monitor
       gnome-maps
@@ -51,6 +51,7 @@
       simple-scan
       geary
       evince
+      gnome-software
     ];
   };
 }

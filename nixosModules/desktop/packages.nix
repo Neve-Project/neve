@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  inputs,
   ...
 }: {
   options = {
@@ -18,7 +17,10 @@
         resources
         gnome-maps
         gnome-console
-        gnome-music
+        amberol
+        decibels
+        showtime
+        papers
         gnome-weather
         gnome-contacts
         gnome-calendar
@@ -30,9 +32,7 @@
         gnome-connections
         simple-scan
         geary
-        evince
         gnome-software
-        inputs.nevica.packages.${pkgs.system}.nevica
       ];
     };
     services.flatpak.packages = [
