@@ -11,6 +11,11 @@
       systemVersion = lib.mkOption {
         type = lib.types.str;
         default = "24.11";
+        description = ''
+          This option specifies your NixOS base version.
+          It is recommended to use the default value.
+        '';
+        example = ''24.05'';
       };
 
       nix = {
@@ -18,12 +23,22 @@
         linker.enable = lib.mkOption {
           type = lib.types.bool;
           default = true;
+          description = ''
+            This option configures the dynamic linker
+            for libraries and packages under /lib
+          '';
+          example = "false";
         };
 
         # Setup Nix Garbage collector to delete-older-than 30 days
         garbageCollect.enable = lib.mkOption {
           type = lib.types.bool;
           default = true;
+          description = ''
+            This option allows nix to garbage collect
+            itself after 30 days
+          '';
+          example = "false";
         };
       };
     };

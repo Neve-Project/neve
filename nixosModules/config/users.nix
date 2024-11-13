@@ -8,6 +8,12 @@
     neve.config.username = lib.mkOption {
       type = lib.types.str;
       default = "neve";
+      description = ''
+        Username for the first user (1000).
+        You have to set your password from root.
+        (passwd YOUR_USERNAME)
+      '';
+      example = "bestGuyEver";
     };
   };
 

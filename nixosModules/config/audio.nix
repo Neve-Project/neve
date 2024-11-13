@@ -10,12 +10,21 @@
         enable = lib.mkOption {
           type = lib.types.bool;
           default = false;
+          description = ''
+            It enables pipeware as audio backend.
+            (This is default to true if you are using a desktop profile).
+          '';
+          example = "true";
         };
 
-        # Enable Asa 32 Bit support
+        # Enable Alsa 32 Bit support
         alsa32.enable = lib.mkOption {
           type = lib.types.bool;
           default = false;
+          description = ''
+            It enables Alsa audio support for 32 bit programs.
+          '';
+          example = "true";
         };
       };
 
@@ -23,6 +32,10 @@
       pulseaudio.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
+        description = ''
+          It enables pulseaudio as audio backend.
+        '';
+        example = "true";
       };
     };
   };

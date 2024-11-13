@@ -10,6 +10,7 @@
       default = false;
       description = ''
         This option installs the default Mesa drivers.
+        (This is enabled by default if you use a desktop profile).
       '';
     };
   };

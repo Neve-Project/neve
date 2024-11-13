@@ -9,18 +9,33 @@
       locale = lib.mkOption {
         type = lib.types.str;
         default = "en_US.UTF-8";
+        description = ''
+          This option sets up your locale.
+          It sets: LC_ADDRESS, LC_IDENTIFICATION,
+          LC_MEASUREMENT, LC_MONETARY, LC_NAME,
+          LC_NUMERIC, LC_PAPER, LC_TELEPHONE, LC_TIME.
+        '';
+        example = "it_IT.UTF-8";
       };
 
       # Setup the keyboard layout
       keyboardLayout = lib.mkOption {
         type = lib.types.str;
         default = "us";
+        description = ''
+          This option sets up your keyboard layout
+        '';
+        example = "it";
       };
 
       # Setup the system timezone
       timezone = lib.mkOption {
         type = lib.types.str;
         default = "Europe/London";
+        description = ''
+          This option sets up your timezone
+        '';
+        example = "Europe/Rome";
       };
     };
   };

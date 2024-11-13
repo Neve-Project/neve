@@ -10,18 +10,32 @@
       backlight.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
+        description = ''
+          It enables screen backlight control.
+        '';
+        example = "true";
       };
 
       # Enable touchpad and gesture support (Enabled by default)
       touchpad.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
+        description = ''
+          It enables touchpad gestures (libinput).
+          (It is enabled by default if you use a desktop profile)
+        '';
+        example = "true";
       };
 
       # Enable iio sensors (brightness, accelerometer, light...)
       iio.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
+        description = ''
+          It enables support for iio sensors.
+          (brightness, accelerometer, light, ...)
+        '';
+        example = "true";
       };
     };
   };
