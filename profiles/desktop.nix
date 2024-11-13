@@ -17,5 +17,6 @@
       distrobox.enable = lib.mkForce true;
     };
     services.printing.enable = lib.mkForce true;
+    packages.libreoffice.enable = lib.mkForce true;
   };
 }
