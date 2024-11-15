@@ -22,7 +22,7 @@
       kernel.withRust = lib.mkDefault true;
       peripheralFirmwareDirectory = lib.mkDefault /etc/nixos/firmware;
       useExperimentalGPUDriver = lib.mkDefault true;
-      experimentalGPUInstallMode = lib.mkDefault "replace";
+      experimentalGPUInstallMode = lib.mkForce "replace";
       setupAsahiSound = lib.mkDefault true;
     };
   };

@@ -34,7 +34,7 @@
     neve.hardware.apple.apple-silicon = {
       enable = lib.mkOption {
         type = lib.types.bool;
-        default = true;
+        default = false;
         description = ''
           Enable the basic Asahi Linux components, such as kernel and boot setup.
         '';
