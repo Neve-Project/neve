@@ -38,6 +38,7 @@
       };
       udev.packages = [pkgs.gnome-settings-daemon];
     };
+
     environment.gnome.excludePackages = with pkgs; [
       totem
       epiphany
@@ -45,7 +46,6 @@
       gnome-maps
       gnome-music
       gnome-weather
-      gnome-console
       gnome-contacts
       gnome-calendar
       gnome-clocks

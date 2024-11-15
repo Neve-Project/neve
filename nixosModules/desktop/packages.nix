@@ -22,7 +22,6 @@
       packages = with pkgs; [
         resources # Resource Monitor
         gnome-maps # Maps
-        gnome-console # Terminal
         gapless # Music Player
         decibels # Audio Player
         showtime # Video Player
