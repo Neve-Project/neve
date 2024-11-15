@@ -2,5 +2,6 @@
 {
   imports = [
     ./apple-t2
+    ./apple-silicon
   ];
 }
