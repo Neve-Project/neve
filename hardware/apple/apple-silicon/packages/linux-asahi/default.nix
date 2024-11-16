@@ -1,10 +1,12 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 {
   lib,
+  pkgs,
   callPackage,
+  writeShellScriptBin,
   writeText,
   linuxPackagesFor,
-  withRust ? false,
+  withRust ? true,
   _kernelPatches ? [],
 }: let
   i = builtins.elemAt;
@@ -118,7 +120,7 @@
     (linuxKernel.manualConfig rec {
         inherit stdenv lib;
 
-        version = "6.11.4-asahi";
+        version = "6.11.6-asahi";
         modDirVersion = version;
         extraMeta.branch = "6.11";
 
@@ -126,8 +128,8 @@
           # tracking: https://github.com/AsahiLinux/linux/tree/asahi-wip (w/ fedora verification)
           owner = "AsahiLinux";
           repo = "linux";
-          rev = "asahi-6.11.4-1";
-          hash = "sha256-2etcnFXJP6KiVzdSeM+gY2VnC+fSQY/cO0IFt5KzF4E=";
+          rev = "asahi-6.11.6-2";
+          hash = "sha256-wGXkwy2ULx0p+iGYuJhuzQMmn72VEn/hsbkcJa6UBig=";
         };
 
         kernelPatches =
@@ -155,7 +157,10 @@
             rustfmt
             rustc
           ];
+        NIX_CFLAGS_COMPILE = (old.NIX_CFLAGS_COMPILE or "") + " -march=armv8.5-a+fp16+fp16fml+aes+sha2+sha3+nosve+nosve2+nomemtag+norng+nosm4+nof32mm+nof64mm";
         RUST_LIB_SRC = rustPlatform.rustLibSrc;
+        hardeningEnable = ["pic" "format" "fortify" "stackprotector"];
+        hardeningDisable = ["bindnow" "pie" "relro"];
       }
       else {});
 
