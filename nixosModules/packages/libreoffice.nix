@@ -22,7 +22,7 @@
   config = lib.mkIf config.neve.packages.libreoffice.enable {
     users.users.${config.neve.config.username} = {
       packages = with pkgs; [
-        libreoffice-fresh
+        libreoffice-still
         hunspell
         hunspellDicts.en_US-large
       ];
