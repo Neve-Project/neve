@@ -38,13 +38,8 @@
         simple-scan # Scanner
         geary # Mail Client
         gnome-software # Flatpak store
+        firefox # Web Browser
       ];
     };
-    services.flatpak.packages = [
-      {
-        appId = "io.github.zen_browser.zen";
-        origin = "flathub";
-      }
-    ];
   };
 }
