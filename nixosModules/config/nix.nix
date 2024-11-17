@@ -11,12 +11,12 @@
       # Configure default nix version
       systemVersion = lib.mkOption {
         type = lib.types.str;
-        default = "24.11";
+        default = "25.05";
         description = ''
           This option specifies your NixOS base version.
           It is recommended to use the default value.
         '';
-        example = ''24.05'';
+        example = ''24.11'';
       };
 
       nix = {
