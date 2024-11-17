@@ -28,30 +28,6 @@
           inherit pkgs-neve;
         };
       };
-      t2-desktop = lib.nixosSystem {
-        system = currentSystem;
-        modules = [
-          inputs.nix-flatpak.nixosModules.nix-flatpak
-          ./profiles/t2-desktop.nix
-        ];
-        specialArgs = {
-          inherit inputs;
-          inherit pkgs-unstable;
-          inherit pkgs-neve;
-        };
-      };
-      asahi-desktop = lib.nixosSystem {
-        system = currentSystem;
-        modules = [
-          inputs.nix-flatpak.nixosModules.nix-flatpak
-          ./profiles/asahi-desktop.nix
-        ];
-        specialArgs = {
-          inherit inputs;
-          inherit pkgs-unstable;
-          inherit pkgs-neve;
-        };
-      };
       workstation = lib.nixosSystem {
         system = currentSystem;
         modules = [
