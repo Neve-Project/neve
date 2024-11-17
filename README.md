@@ -1,4 +1,29 @@
-# Neve: A Customizable NixOS-based Distribution ❄️
+<h1 align="center">
+   <img src="./.github/assets/logo/nixos-logo.png  " width="100px" /> 
+   <br>
+      Neve: A Customizable NixOS-based Distribution ❄️
+   <br>
+      <img src="./.github/assets/pallet/pallet-0.png" width="600px" /> <br>
+
+<div align="center">
+      <p></p>
+      <div align="center">
+         <a href="https://github.com/Neve-Project/neve/stargazers">
+            <img src="https://img.shields.io/github/stars/Neve-Project/neve?color=FABD2F&labelColor=282828&style=for-the-badge&logo=starship&logoColor=FABD2F">
+         </a>
+         <a href="https://github.com/Neve-Project/neve">
+            <img src="https://img.shields.io/github/repo-size/Neve-Project/neve?color=B16286&labelColor=282828&style=for-the-badge&logo=github&logoColor=B16286">
+         </a>
+         <a = href="https://nixos.org">
+            <img src="https://img.shields.io/badge/NixOS-24.11-blue.svg?style=for-the-badge&labelColor=282828&logo=NixOS&logoColor=458588&color=458588">
+         </a>
+         <a href="https://github.com/Neve-Project/neve/blob/main/LICENSE">
+            <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=GPL-V2&colorA=282828&colorB=98971A&logo=unlicense&logoColor=98971A&"/>
+         </a>
+      </div>
+      <br>
+   </div>
+</h1>
 
 Welcome to **Neve**, a distribution based on **NixOS** and managed through the **Nix package manager**, designed to offer optimal hardware compatibility and customization options for every type of user. Whether you’re a beginner seeking simplicity and stability or an advanced user looking for complete control, Neve provides the tools to meet your needs.
 
