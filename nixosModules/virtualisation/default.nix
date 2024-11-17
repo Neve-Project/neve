@@ -3,5 +3,6 @@
   imports = [
     ./container.nix
     ./libvirtd.nix
+    ./wine.nix
   ];
 }

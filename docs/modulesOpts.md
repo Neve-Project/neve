@@ -1,3 +1,5 @@
+# Modules Options (WIP)
+
 ## config/audio.nix
 
 ### neve.config.audio.pipewire.enable
@@ -332,4 +334,13 @@
 - **default**: false
 - **description**: This option enables qemu/libvirt.
   It also adds support for win-virtio and win-spice.
+- **example**: true
+
+## virtualisation/wine.nix
+
+### neve.virtualisation.wine.enable
+
+- **type**: bool
+- **default**: false
+- **description**: Enable Wine support (Windows programs support)
 - **example**: true

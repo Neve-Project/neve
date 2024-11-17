@@ -52,6 +52,18 @@
           inherit pkgs-neve;
         };
       };
+      workstation = lib.nixosSystem {
+        system = currentSystem;
+        modules = [
+          inputs.nix-flatpak.nixosModules.nix-flatpak
+          ./profiles/workstation.nix
+        ];
+        specialArgs = {
+          inherit inputs;
+          inherit pkgs-unstable;
+          inherit pkgs-neve;
+        };
+      };
     };
   };
 
