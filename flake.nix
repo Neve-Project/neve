@@ -1,5 +1,7 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 {
+  description = "Neve: A Customizable NixOS-based Distribution";
+
   outputs = {
     nixpkgs,
     nixpkgs-unstable,
@@ -7,14 +9,13 @@
     self,
     ...
   } @ inputs: let
-    # -------------------------------------------------------------------
     inherit (nixpkgs) lib;
-    currentSystem = "x86_64-linux";
+    currentSystem = builtins.currentSystem;
     pkgs = import nixpkgs {system = currentSystem;};
     pkgs-unstable = import nixpkgs-unstable {system = currentSystem;};
     pkgs-neve = nevepkgs.packages.${currentSystem};
   in {
-    # -------------------- NixOS Configuration --------------------------
+    # -------------------- Desktop Configuration --------------------------
     nixosConfigurations = {
       desktop = lib.nixosSystem {
         system = currentSystem;
@@ -28,6 +29,7 @@
           inherit pkgs-neve;
         };
       };
+      # -------------------- Workstation Configuration --------------------------
       workstation = lib.nixosSystem {
         system = currentSystem;
         modules = [
@@ -43,9 +45,9 @@
     };
   };
 
-  # -------------------Inputs -----------------------------------------
+  # ------------------- Inputs -----------------------------------------
   inputs = {
-    # ------------------ NixPkgs ----------------------------------------
+    # --------------------- Pkgs ----------------------------------------
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nevepkgs.url = "github:Neve-Project/nevepkgs";
@@ -56,6 +58,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    # ------------------ Nix Flatpak -------------------------------------
     nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 }
