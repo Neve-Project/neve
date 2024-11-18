@@ -37,8 +37,6 @@
       graphics = {
         enable = true;
         enable32Bit = true;
-        driSupport = true;
-        driSupport32Bit = true;
         # Amd vulkan support and OpenCL support
         extraPackages = with pkgs;
           [

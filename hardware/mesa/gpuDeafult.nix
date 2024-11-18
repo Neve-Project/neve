@@ -22,7 +22,6 @@
       graphics = {
         # Enable generic graphics support
         enable = true;
-        driSupport = true;
       };
     };
   };
