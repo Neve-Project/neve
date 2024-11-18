@@ -36,11 +36,13 @@
     hardware = {
       graphics = {
         enable = true;
+        enable32Bit = true;
+        driSupport = true;
+        driSupport32Bit = true;
         # Amd vulkan support and OpenCL support
         extraPackages = with pkgs;
           [
-            amdvlk
-            mesa.opencl
+            mesa
           ]
           # Rocm packages
           ++ (lib.optionals config.neve.hardware.amd.gpu.rocm.enable [
@@ -53,7 +55,7 @@
 
         # Vulkan support for 32-bit
         extraPackages32 = with pkgs.driversi686Linux; [
-          amdvlk
+          mesa
         ];
       };
     };
@@ -68,8 +70,19 @@
     };
 
     # Make Hip libraries linked to /opt/rocm/hip
-    systemd.tmpfiles.rules = lib.mkIf config.neve.hardware.amd.gpu.rocm.enable [
-      "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
-    ];
+    systemd = lib.mkIf config.neve.hardware.amd.gpu.rocm.enable {
+      tmpfiles.rules = let
+        rocmEnv = pkgs.symlinkJoin {
+          name = "rocm-combined";
+          paths = with pkgs.rocmPackages; [
+            rocblas
+            hipblas
+            clr
+          ];
+        };
+      in [
+        "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
+      ];
+    };
   };
 }
