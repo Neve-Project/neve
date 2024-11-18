@@ -59,6 +59,9 @@
     hardware = {
       graphics = {
         enable = true;
+        enable32Bit = true;
+        driSupport = true;
+        driSupport32Bit = true;
         extraPackages = with pkgs;
         # Intel graphics driver for GPUs older than Tiger Lake (AKA 11st gen)
           lib.optionals (config.neve.hardware.intel.gpu.version < 5) [
