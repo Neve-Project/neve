@@ -16,31 +16,42 @@
   config = lib.mkIf config.neve.packages.steam.enable {
     nixpkgs.config.allowUnfree = true;
     environment.systemPackages = with pkgs; [
-      steam
       steam-run
+      mangohud
     ];
     programs = {
-      gamemode.enable = true;
+      gamemode = {
+        enable = true;
+        capSysNice = true;
+      };
       steam = {
         enable = true;
         package = pkgs.steam.override {
-          extraPkgs = pkgs:
-            with pkgs; [
-              xorg.libXcursor
-              xorg.libXi
-              xorg.libXinerama
-              xorg.libXScrnSaver
-              libpng
-              libpulseaudio
-              libvorbis
-              stdenv.cc.cc.lib
-              libkrb5
-              keyutils
+          extraEnv = {
+            MANGOHUD = true;
+            OBS_VKCAPTURE = true;
+            RADV_TEX_ANISO = 16;
+          };
+          extraLibraries = p:
+            with p; [
+              atk
             ];
         };
+        extraPackages = with pkgs; [
+          gamescope
+        ];
         gamescopeSession.enable = true;
         remotePlay.openFirewall = true;
+        dedicatedServer.openFirewall = true;
         localNetworkGameTransfers.openFirewall = true;
+        extest.enable = true;
+        protontricks = {
+          enable = true;
+          package = pkgs.protontricks;
+        };
+        extraCompatPackages = with pkgs; [
+          proton-ge-bin
+        ];
       };
     };
   };
