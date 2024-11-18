@@ -5,5 +5,6 @@
     ./multimedia.nix
     ./basepkgs.nix
     ./libreoffice.nix
+    ./steam.nix
   ];
 }
