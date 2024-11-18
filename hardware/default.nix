@@ -4,5 +4,6 @@
     ./intel
     ./mesa
     ./apple
+    ./amd
   ];
 }
