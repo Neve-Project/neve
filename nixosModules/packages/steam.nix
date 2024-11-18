@@ -20,10 +20,7 @@
       mangohud
     ];
     programs = {
-      gamemode = {
-        enable = true;
-        capSysNice = true;
-      };
+      gamemode.enable = true;
       steam = {
         enable = true;
         package = pkgs.steam.override {
