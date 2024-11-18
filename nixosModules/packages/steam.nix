@@ -14,9 +14,9 @@
 
   # Enable steam if selected. It also install a steam session.
   config = lib.mkIf config.neve.packages.steam.enable {
+    nixpkgs.config.allowUnfree = true;
     environment.systemPackages = with pkgs; [
       steam
-      steamPackages.steam-runtime
       steam-run
     ];
     programs = {
