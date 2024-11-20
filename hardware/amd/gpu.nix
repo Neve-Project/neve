@@ -11,14 +11,6 @@
         type = lib.types.bool;
         default = false;
       };
-      rocm.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-      };
-      preVega.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-      };
       monitoring.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
@@ -26,11 +18,8 @@
     };
   };
   config = lib.mkIf config.neve.hardware.amd.gpu.enable {
-    # Enable AMDGPU driver
-    boot.initrd.kernelModules = ["amdgpu"];
-
     # Enable AMDGPU driver for xorg or xwayland
-    services.xserver.videoDrivers = ["amdgpu"];
+    services.xserver.videoDrivers = ["modsetting"];
 
     # Setup For 24.05 and older
     hardware = {
@@ -38,49 +27,32 @@
         enable = true;
         enable32Bit = true;
         # Amd vulkan support and OpenCL support
-        extraPackages = with pkgs;
-          [
-            mesa
-          ]
-          # Rocm packages
-          ++ (lib.optionals config.neve.hardware.amd.gpu.rocm.enable [
-            rocmPackages.rocm-core
-            rocmPackages.rocm-runtime
-            rocmPackages.clr.icd
-            rocmPackages.rocm-smi
-            rocmPackages.rocminfo
-          ]);
+        extraPackages = with pkgs; [
+          mesa
+          mesa.opencl
+        ];
 
         # Vulkan support for 32-bit
         extraPackages32 = with pkgs.driversi686Linux; [
           mesa
+          mesa.opencl
         ];
       };
     };
 
     # Install monitoring tool
     environment = {
-      systemPackages = lib.mkIf config.neve.hardware.amd.gpu.monitoring.enable [pkgs.nvtopPackages.amd];
-      # Setup Rocm for Pre Vega GPUs
-      variables = lib.mkIf (config.neve.hardware.amd.gpu.rocm.enable && config.neve.hardware.amd.gpu.preVega.enable) {
-        ROC_ENABLE_PRE_VEGA = "1";
-      };
+      systemPackages = lib.mkIf config.neve.hardware.amd.gpu.monitoring.enable [
+        pkgs.nvtopPackages.amd
+      ];
     };
 
-    # Make Hip libraries linked to /opt/rocm/hip
-    systemd = lib.mkIf config.neve.hardware.amd.gpu.rocm.enable {
-      tmpfiles.rules = let
-        rocmEnv = pkgs.symlinkJoin {
-          name = "rocm-combined";
-          paths = with pkgs.rocmPackages; [
-            rocblas
-            hipblas
-            clr
-          ];
-        };
-      in [
-        "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
-      ];
+    environment.variables = {
+      VK_DRIVER_FILES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
+      OCL_ICD_VENDORS = "/run/opengl-driver/etc/OpenCL/vendors/rusticl.icd";
+      RUSTICL_ENABLE = "radeonsi:0";
+      RUSTICL_CL_VERSION = "2.1";
+      RUSTICL_DEVICE_TYPE = "gpu";
     };
   };
 }
