@@ -18,22 +18,12 @@
     environment.systemPackages = with pkgs; [
       steam-run
       mangohud
+      gamemode
     ];
     programs = {
       gamemode.enable = true;
       steam = {
         enable = true;
-        package = pkgs.steam.override {
-          extraEnv = {
-            MANGOHUD = true;
-            OBS_VKCAPTURE = true;
-            RADV_TEX_ANISO = 16;
-          };
-          extraLibraries = p:
-            with p; [
-              atk
-            ];
-        };
         extraPackages = with pkgs; [
           gamescope
         ];
@@ -41,7 +31,7 @@
         remotePlay.openFirewall = true;
         dedicatedServer.openFirewall = true;
         localNetworkGameTransfers.openFirewall = true;
-        extest.enable = true;
+        # extest.enable = true;
         protontricks = {
           enable = true;
           package = pkgs.protontricks;
