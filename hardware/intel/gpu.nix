@@ -71,7 +71,7 @@
             # Intel QuickSync Driver (Unfree)
             intel-media-sdk
             # Intel OpenCL Driver
-            intel-ocl
+            mesa.opencl
           ]
           # Intel graphics driver for GPUs between Broadwell and Tiger Lake
           ++ lib.optionals (config.neve.hardware.intel.gpu.version >= 5 && config.neve.hardware.intel.gpu.version <= 11) [
@@ -83,7 +83,7 @@
             # Intel QuickSync Driver (Unfree)
             intel-media-sdk
             # Intel OpenCL Driver
-            intel-ocl
+            mesa.opencl
           ]
           # Intel graphics driver for GPUs newer than Tiger Lake
           ++ lib.optionals (config.neve.hardware.intel.gpu.version > 11) [
@@ -95,7 +95,7 @@
             # Intel QuickSync Driver (Unfree)
             vpl-gpu-rt
             # Intel OpenCL Driver
-            intel-ocl
+            mesa.opencl
           ];
 
         # VA-API support for 32-bit for both before and after Tiger Lake
@@ -103,9 +103,12 @@
           lib.optionals (config.neve.hardware.intel.gpu.version < 5)
           [
             intel-vaapi-driver
+            libvdpau-va-gl
           ]
           ++ lib.optionals (config.neve.hardware.intel.gpu.version >= 5) [
             intel-media-driver
+            mesa.opencl
+            libvdpau-va-gl
           ];
       };
     };
@@ -126,7 +129,10 @@
           else "i965"
         );
         # OpenCL vendors path
-        OCL_ICD_VENDORS = "/run/opengl-driver/etc/OpenCL/vendors";
+        OCL_ICD_VENDORS = "/run/opengl-driver/etc/OpenCL/vendors/rusticl.icd";
+        RUSTICL_ENABLE = "iris:0";
+        RUSTICL_DEVICE_TYPE = "gpu";
+        RUSTICL_CL_VERSION = "3.0";
       };
     };
   };
