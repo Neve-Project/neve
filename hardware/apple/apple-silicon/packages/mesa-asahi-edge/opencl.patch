@@ -56,4 +56,3 @@ index 2b214adbbf5..53e466174d5 100644
 +  install : false,
    install_dir : join_paths(get_option('sysconfdir'), 'OpenCL', 'vendors'),
  )
- 
