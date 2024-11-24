@@ -37,7 +37,6 @@
         gnome-connections # Remote Desktop Connection
         simple-scan # Scanner
         geary # Mail Client
-        gnome-software # Flatpak store
         firefox # Web Browser
       ];
     };

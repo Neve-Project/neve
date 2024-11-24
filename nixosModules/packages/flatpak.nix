@@ -2,6 +2,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   options = {
@@ -41,6 +42,11 @@
           name = "rhel";
           location = "https://flatpaks.redhat.io/rhel.flatpakrepo";
         }
+      ];
+    };
+    users.users.${config.neve.config.username} = {
+      packages = with pkgs; [
+        gnome-software
       ];
     };
   };
